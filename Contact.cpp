@@ -50,7 +50,7 @@ const bool&  Contact::getBookmark() {
   ** creating the new Contact was invalid. Else true
   ** if details received were ok.
   */
-bool	Contact::addOneContact(PhoneBook	*phonebook) {
+bool	Contact::addOneContact(PhoneBook * phonebook) {
     etc::printOut(etc::YELLOW, "Enter name") ;
     std::getline(std::cin, _name) ;
     etc::printOut(etc::YELLOW, "Enter phone number") ;
@@ -79,7 +79,7 @@ bool	Contact::addOneContact(PhoneBook	*phonebook) {
   * @returns true if _number exists already in other
   ** instances of Contact object. Else, returns true.
   */
-bool	Contact::validateNumberInput(PhoneBook *phonebook) {
+bool	Contact::validateNumberInput(PhoneBook * phonebook) {
     int8_t contactCount = phonebook->getCount() - 1 ;
 
     while (contactCount >= 0) {
