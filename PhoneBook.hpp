@@ -1,13 +1,12 @@
 #pragma once
 
 #ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 
 # include <iostream>
 # include <string>
 # include <stdexcept>
 # include <iomanip>
-// # include <sstream>
 # include "_etc_.hpp"
 # include "Contact.hpp"
 
@@ -20,24 +19,24 @@ class Contact ;
 class PhoneBook
 {
 public:
-	PhoneBook() ;
-  ~PhoneBook() ;
+    PhoneBook() ;
+    ~PhoneBook() ;
 
-  const __int8&   getCount() ;
-  Contact*        getArrayFromContact(const __int8&) ;
+    const int8_t&   getCount() ;
+    Contact*        getArrayFromContact(const int8_t&) ;
 
-  static void   showHomeScreen(std::string&) ;
+    static void   showHomeScreen(std::string&) ;
 
-  void    addContact() ;
-	void	  removeOneContact(__int8, const bool&) ;
-	void	  displaySearchResults() ;
-  void	  showSingleContactUsingIndex() ;
-  void    displayBookmarks() ;
-  void    removeContact() ;  
+    void    addContact() ;
+    void	  removeOneContact(int8_t, const bool&) ;
+    void	  displaySearchResults() ;
+    void	  showSingleContactUsingIndex() ;
+    void    displayBookmarks() ;
+    void    removeContact() ;
 
 private:
-	__int8     _count ;                    // Value of _count is total number of Contacts currently stored in *_contact[]
-	Contact	   *_contact[MAX_ENTRY + 1] ;  // Each array of  *_contact[] holds a unique Contact
+    int8_t     _count ;                    // Value of _count is total number of Contacts currently stored in *_contact[]
+    Contact	   *_contact[MAX_ENTRY + 1] ;  // Each array of  *_contact[] holds a unique Contact
 } ;
 
-#endif
+#endif // PHONEBOOK_HPP

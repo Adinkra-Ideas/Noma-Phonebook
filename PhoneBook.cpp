@@ -7,13 +7,15 @@
 PhoneBook::PhoneBook() : _count(0) {}
 
 PhoneBook::~PhoneBook() {
-  int	i;
+    int	i;
 
-	i = 0;
-	while ( i < _count ) {
-		delete _contact[i];
-		i++;
-	}
+    i = 0;
+    while ( i < _count ) {
+        delete _contact[i];
+        i++;
+    }
+
+  etc::printOut(etc::GREEN, "Goodbye User!") ;
 }
 
 // ******************
@@ -25,12 +27,12 @@ PhoneBook::~PhoneBook() {
 //  GETTERS BEGINS  *
 // ******************
 
-const __int8& PhoneBook::getCount() {
-  return (_count) ;
+const int8_t& PhoneBook::getCount() {
+    return (_count) ;
 }
 
-Contact*  PhoneBook::getArrayFromContact(const __int8& i) {
-  return (_contact[i]) ;
+Contact*  PhoneBook::getArrayFromContact(const int8_t& i) {
+    return (_contact[i]) ;
 }
 
 // ******************
@@ -41,7 +43,7 @@ Contact*  PhoneBook::getArrayFromContact(const __int8& i) {
 // ************************
 //  STATIC METHODS BEGINS *
 // ************************
-
+ 
 /**
   * Shows the homescreen of the App where stdin is
   ** listening for a user to enter a command.
@@ -50,9 +52,9 @@ Contact*  PhoneBook::getArrayFromContact(const __int8& i) {
   * @returns void
   */
 void  PhoneBook::showHomeScreen(std::string& cmd) {
-  etc::printOut(etc::MAGENTA, "Noma PhoneBook!") ;
-  etc::printOut(etc::YELLOW, "Enter a Command") ;
-	std::getline(std::cin, cmd);
+    etc::printOut(etc::MAGENTA, "Noma PhoneBook!") ;
+    etc::printOut(etc::YELLOW, "Enter a Command") ;
+    std::getline(std::cin, cmd);
 }
 
 // **********************
@@ -65,20 +67,20 @@ void  PhoneBook::showHomeScreen(std::string& cmd) {
   * @returns void
   */
 void	PhoneBook::addContact() {
-	_contact[_count] = new Contact ;
+    _contact[_count] = new Contact ;
 
-	if ( _contact[_count]->addOneContact(this) ) {
-    etc::printOut(etc::RED, "Contact not Saved!", true, false) ;
-		delete _contact[_count] ;
-		return ;
-	}
-	if ( _count == MAX_ENTRY ) {
-    _count -= 1 ;
-		this->removeOneContact(0, false) ;
-  }
-  etc::printOut(etc::GREEN, "New Contact Saved!") ;
-  
-	_count += 1 ;
+    if ( _contact[_count]->addOneContact(this) ) {
+        etc::printOut(etc::RED, "Contact not Saved!", true, false) ;
+        delete _contact[_count] ;
+        return ;
+    }
+    if ( _count == MAX_ENTRY ) {
+        _count -= 1 ;
+        this->removeOneContact(0, false) ;
+    }
+    etc::printOut(etc::GREEN, "New Contact Saved!") ;
+
+    _count += 1 ;
 }
 
 /**
@@ -89,20 +91,20 @@ void	PhoneBook::addContact() {
   ** If false, it has no effect.
   * @returns void
   */
-void PhoneBook::removeOneContact(__int8 index, const bool& flag) {
-  if (index < 0) {
-    return ;
-  }
+void PhoneBook::removeOneContact(int8_t index, const bool& flag) {
+    if (index < 0) {
+        return ;
+    }
 
-	delete _contact[index] ;
-	while ( index < MAX_ENTRY ) {
-		_contact[index] = _contact[index + 1] ;
-		index++ ;
-	}
+    delete _contact[index] ;
+    while ( index < MAX_ENTRY ) {
+        _contact[index] = _contact[index + 1] ;
+        index++ ;
+    }
 
-  if (flag == true) {
-    _count -= 1;
-  }
+    if (flag == true) {
+        _count -= 1;
+    }
 }
 
 /**
@@ -110,27 +112,27 @@ void PhoneBook::removeOneContact(__int8 index, const bool& flag) {
   * @returns void
   */
 void	PhoneBook::displaySearchResults() {
-	__int8	      i ;
-	std::string   input ;
+    int8_t	      i ;
+    std::string   input ;
 
-	i = 0 ;
-  etc::printOut(etc::GREEN, "     INDEX|      NAME|  NICKNAME|") ;
+    i = 0 ;
+    etc::printOut(etc::GREEN, "     INDEX|      NAME|  NICKNAME|") ;
 
-  if ( ! _count ) {
-    etc::printOut(etc::RED, "Contact List is empty!", true, false) ;
-    return ;
-  }
-  
-	while ( ++i <= _count ) {
-    std::cout << std::setw(10) << static_cast<int>(i) << "|" ;
+    if ( ! _count ) {
+        etc::printOut(etc::RED, "Contact List is empty!", true, false) ;
+        return ;
+    }
 
-    std::cout << std::setw(10) << _contact[i - 1]->getName().substr(0, 10) << "|" ;
+    while ( ++i <= _count ) {
+        std::cout << std::setw(10) << static_cast<int>(i) << "|" ;
 
-    std::cout << std::setw(10) << _contact[i - 1]->getNickname().substr(0, 10) << "|" ;
-    std::cout << std::endl ;
-  }
+        std::cout << std::setw(10) << _contact[i - 1]->getName().substr(0, 10) << "|" ;
 
-  this->showSingleContactUsingIndex() ;
+        std::cout << std::setw(10) << _contact[i - 1]->getNickname().substr(0, 10) << "|" ;
+        std::cout << std::endl ;
+    }
+
+    this->showSingleContactUsingIndex() ;
 }
 
 /**
@@ -140,26 +142,26 @@ void	PhoneBook::displaySearchResults() {
   * @returns void
   */
 void	PhoneBook::showSingleContactUsingIndex() {
-  int			      i ;
-	std::string   input ;
+    int			      i ;
+    std::string   input ;
 
-  etc::printOut(etc::YELLOW, "Enter index number of a contact for full details") ;
-	std::getline(std::cin, input) ;
-	try
-	{
-    i = std::stoi(input, nullptr) ;
-	}
-  catch ( ... )
-	{
-    etc::printOut(etc::RED, "The index requested is wrong!", true, false) ;
-		return ;
+    etc::printOut(etc::YELLOW, "Enter index number of a contact for full details") ;
+    std::getline(std::cin, input) ;
+    try
+    {
+        i = std::stoi(input, nullptr) ;
     }
-	if ( i > 0 && i <= _count ) {
-    _contact[i - 1]->printContact() ;
-  }
-	else {
-    etc::printOut(etc::RED, "The index requested is out of range!", true, false) ;
-  }
+    catch ( ... )
+    {
+        etc::printOut(etc::RED, "The index requested is wrong!", true, false) ;
+        return ;
+    }
+    if ( i > 0 && i <= _count ) {
+        _contact[i - 1]->printContact() ;
+    }
+    else {
+        etc::printOut(etc::RED, "The index requested is out of range!", true, false) ;
+    }
 }
 
 /**
@@ -167,60 +169,60 @@ void	PhoneBook::showSingleContactUsingIndex() {
   * @returns void
   */
 void  PhoneBook::displayBookmarks() {
-  __int8 i = 0 ;
-  __int8 j = 0 ;
+    int8_t i = 0 ;
+    int8_t j = 0 ;
 
-  while ( i < _count ) {
-    if ( _contact[i]->getBookmark() == true  ) {
-      std::cout << _contact[i]->getName() << " : " << _contact[i]->getNumber() << std::endl ;
-      ++j ;
+    while ( i < _count ) {
+        if ( _contact[i]->getBookmark() == true  ) {
+            std::cout << _contact[i]->getName() << " : " << _contact[i]->getNumber() << std::endl ;
+            ++j ;
+        }
+        ++i ;
     }
-    ++i ;
-  }
 
-  if ( j == 0 ) {
-    etc::printOut(etc::RED, "Bookmark is empty!", true, false) ;
-  }
+    if ( j == 0 ) {
+        etc::printOut(etc::RED, "Bookmark is empty!", true, false) ;
+    }
 }
 
 
 /**
-  * Listens on STDIN for user to enter the index or number 
+  * Listens on STDIN for user to enter the index or number
   ** of a Contact they want to delete. Then after receiving
   ** user input from STDIN, it first tries to use input as
   ** index number for deletion, if fails, then it tries to
-  ** use input as phone number for deletion. 
+  ** use input as phone number for deletion.
   * @returns void
   */
 void  PhoneBook::removeContact() {
-  std::string input ;
-  __int8      i ;
+    std::string input ;
+    int8_t      i ;
 
-  if ( ! _count ) {
-    etc::printOut(etc::RED, "Contact List is empty!", true, false) ;
-    return ;
-  }
-
-  etc::printOut(etc::YELLOW, "Enter index or number of a contact to delete") ;
-  std::getline(std::cin, input) ;
-
-  try
-	{
-    i = std::stoi(input, nullptr) ;
-    if ( i <= MAX_ENTRY && i >= 0 && i <= _count ) {
-      this->removeOneContact(i - 1, true) ;
-    } else {
-      throw std::out_of_range("") ;
+    if ( ! _count ) {
+        etc::printOut(etc::RED, "Contact List is empty!", true, false) ;
+        return ;
     }
-	}
-  catch ( ... ) {
-    for ( i = 0; i < _count; ++i ) {
-      if ( ! _contact[i]->getNumber().compare(input) ) {
-        this->removeOneContact(i, true) ;
-        break ;
-      }
-	  }
-  }
 
-  etc::printOut(etc::GREEN, "Action Performed!") ;
+    etc::printOut(etc::YELLOW, "Enter index or number of a contact to delete") ;
+    std::getline(std::cin, input) ;
+
+    try
+    {
+        i = std::stoi(input, nullptr) ;
+        if ( i <= MAX_ENTRY && i >= 0 && i <= _count ) {
+            this->removeOneContact(i - 1, true) ;
+        } else {
+            throw std::out_of_range("") ;
+        }
+    }
+    catch ( ... ) {
+        for ( i = 0; i < _count; ++i ) {
+            if ( ! _contact[i]->getNumber().compare(input) ) {
+                this->removeOneContact(i, true) ;
+                break ;
+            }
+        }
+    }
+
+    etc::printOut(etc::GREEN, "Action Performed!") ;
 }

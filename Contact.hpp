@@ -1,7 +1,7 @@
 #pragma once
 
 #ifndef CONTACT_HPP
-# define CONTACT_HPP
+#define CONTACT_HPP
 
 # include <iostream>
 # include <string>
@@ -13,25 +13,25 @@ class PhoneBook ;
 class Contact
 {
 public:
-	Contact() ;
-  ~Contact() ;
+    Contact() ;
+    ~Contact() ;
 
-  const std::string&		  getName() ;
-  const std::string&		  getNickname() ;
-  const std::string&		  getNumber() ;
-  const bool&             getBookmark() ;
+    const std::string&		  getName() ;
+    const std::string&		  getNickname() ;
+    const std::string&		  getNumber() ;
+    const bool&             getBookmark() ;
 
-  bool          addOneContact(PhoneBook *) ;
-  bool          validateNumberInput(PhoneBook *) ;
-	bool          entryValidator() ;
-	void	        printContact() ;
-  const char*   addBookmark() ;
+    bool          addOneContact(PhoneBook *) ;
+    bool          validateNumberInput(PhoneBook *) ;
+    bool          entryValidator() ;
+    void	        printContact() ;
+    const char*   addBookmark() ;
 
 private:
-	std::string   _name ;     // name of the Contact
-  std::string   _number ;   // phone number of the Contact
-	std::string   _nickname ; // nickname of the Contact
-  bool          _bookmark ; // If true, it means this contact is saved as bookmark
+    std::string   _name ;     // name of the Contact
+    std::string   _number ;   // phone number of the Contact
+    std::string   _nickname ; // nickname of the Contact
+    bool          _bookmark ; // If true, it means this contact is saved as bookmark
 } ;
 
-#endif
+#endif // CONTACT_HPP

@@ -5,9 +5,9 @@
 // ********************
 
 Contact::Contact() :  _name(""),
-                      _number(""),
-                      _nickname(""),
-                      _bookmark(false) {}
+    _number(""),
+    _nickname(""),
+    _bookmark(false) {}
 
 Contact::~Contact() {}
 
@@ -21,19 +21,19 @@ Contact::~Contact() {}
 // ******************
 
 const std::string&	 Contact::getName() {
-  return (_name) ;
+    return (_name) ;
 }
 
 const std::string&	 Contact::getNickname() {
-  return (_nickname) ;
+    return (_nickname) ;
 }
 
 const std::string&	 Contact::getNumber() {
-  return (_number) ;
+    return (_number) ;
 }
 
 const bool&  Contact::getBookmark() {
-  return _bookmark ;
+    return _bookmark ;
 }
 
 // ******************
@@ -51,22 +51,22 @@ const bool&  Contact::getBookmark() {
   ** if details received were ok.
   */
 bool	Contact::addOneContact(PhoneBook	*phonebook) {
-  etc::printOut(etc::YELLOW, "Enter name") ;
-	std::getline(std::cin, _name) ;
-  etc::printOut(etc::YELLOW, "Enter phone number") ;
-  std::getline(std::cin, _number) ;
-  while (this->validateNumberInput(phonebook)) {
-    etc::printOut(etc::RED, "Phone number exists already!") ;
-    etc::printOut(etc::YELLOW, "Enter new number") ;
+    etc::printOut(etc::YELLOW, "Enter name") ;
+    std::getline(std::cin, _name) ;
+    etc::printOut(etc::YELLOW, "Enter phone number") ;
     std::getline(std::cin, _number) ;
-  }
-	
-  etc::printOut(etc::YELLOW, "Enter nickname") ;
-	std::getline(std::cin, _nickname) ;
-	if ( this->entryValidator() ) {
-    return true ;
-  }
-	return false ;
+    while (this->validateNumberInput(phonebook)) {
+        etc::printOut(etc::RED, "Phone number exists already!") ;
+        etc::printOut(etc::YELLOW, "Enter new number") ;
+        std::getline(std::cin, _number) ;
+    }
+
+    etc::printOut(etc::YELLOW, "Enter nickname") ;
+    std::getline(std::cin, _nickname) ;
+    if ( this->entryValidator() ) {
+        return true ;
+    }
+    return false ;
 }
 
 /**
@@ -76,19 +76,19 @@ bool	Contact::addOneContact(PhoneBook	*phonebook) {
   * @param phonebook Required for gaining access to
   ** the phonebook->_contact[] object for comparing
   ** number received against numbers already saved.
-  * @returns true if _number exists already in other 
+  * @returns true if _number exists already in other
   ** instances of Contact object. Else, returns true.
   */
 bool	Contact::validateNumberInput(PhoneBook *phonebook) {
-  __int8 contactCount = phonebook->getCount() - 1 ;
-  
-  while (contactCount >= 0) {
-    if (! _number.compare(phonebook->getArrayFromContact(contactCount)->getNumber()) ) {
-      return true ;
+    int8_t contactCount = phonebook->getCount() - 1 ;
+
+    while (contactCount >= 0) {
+        if (! _number.compare(phonebook->getArrayFromContact(contactCount)->getNumber()) ) {
+            return true ;
+        }
+        contactCount-- ;
     }
-    contactCount-- ;
-  }
-  return false ;
+    return false ;
 }
 
 /**
@@ -97,12 +97,12 @@ bool	Contact::validateNumberInput(PhoneBook *phonebook) {
   * @returns true if any is empty. Else returns false.
   */
 bool	Contact::entryValidator() {
-	if ( !_name.length()
-    || !_number.length()
-		|| !_nickname.length() ) {
-      return true ;
+    if ( !_name.length()
+        || !_number.length()
+        || !_nickname.length() ) {
+        return true ;
     }
-	return false ;
+    return false ;
 }
 
 /**
@@ -110,10 +110,10 @@ bool	Contact::entryValidator() {
   * @returns void
   */
 void	Contact::printContact() {
-	std::cout << "First Name:       " << _name << std::endl
-			<< "Phone Number:     " << _number << std::endl
-      << "Nickname:         " << _nickname << std::endl 
-      << (( ! _bookmark ) ?  this->addBookmark() : "") << std::endl ;
+    std::cout << "First Name:       " << _name << std::endl
+              << "Phone Number:     " << _number << std::endl
+              << "Nickname:         " << _nickname << std::endl
+              << (( ! _bookmark ) ?  this->addBookmark() : "") << std::endl ;
 }
 
 /**
@@ -124,15 +124,15 @@ void	Contact::printContact() {
   ** string literal.
   */
 const char* Contact::addBookmark() {
-  std::string userInput ;
+    std::string userInput ;
 
-  etc::printOut(etc::YELLOW, "To Bookmark, enter *\nTo return, enter any Character") ;
+    etc::printOut(etc::YELLOW, "To Bookmark, enter *\nTo return, enter any Character") ;
 
-  std::getline(std::cin, userInput) ;
-  if ( userInput.at(0) == '*' ) {
-    _bookmark = true ;
-    return "Bookmark Set Successfully!" ;
-  } else {
-    return "" ;
-  }
+    std::getline(std::cin, userInput) ;
+    if ( userInput.at(0) == '*' ) {
+        _bookmark = true ;
+        return "Bookmark Set Successfully!" ;
+    } else {
+        return "" ;
+    }
 }

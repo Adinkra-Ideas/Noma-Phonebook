@@ -41,7 +41,6 @@ int main()
 	}
 
 	if ( ! cmd.compare("EXIT\0") ) {
-    etc::printOut(etc::GREEN, "Goodbye User!") ;
 		return (0);
   }
 
