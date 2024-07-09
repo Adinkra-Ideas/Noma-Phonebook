@@ -1,7 +1,0 @@
-/home/euyi/clang/Noma/build-unix /CMakeFiles/install/strip.dir
-/home/euyi/clang/Noma/build-unix /CMakeFiles/install/local.dir
-/home/euyi/clang/Noma/build-unix /CMakeFiles/install.dir
-/home/euyi/clang/Noma/build-unix /CMakeFiles/list_install_components.dir
-/home/euyi/clang/Noma/build-unix /CMakeFiles/rebuild_cache.dir
-/home/euyi/clang/Noma/build-unix /CMakeFiles/edit_cache.dir
-/home/euyi/clang/Noma/build-unix /CMakeFiles/noma.dir

@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/noma.dir/main.cpp.o CMakeFiles/noma.dir/_etc_.cpp.o CMakeFiles/noma.dir/Contact.cpp.o CMakeFiles/noma.dir/PhoneBook.cpp.o  -o noma 
