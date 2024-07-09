@@ -7,14 +7,14 @@
 # include <string>
 
 namespace etc {
-static const char  *RESET_COLOR = "\033[0m" ;
-static const char  *RED = "\033[1;31m" ;
-static const char  *GREEN = "\033[1;32m" ;
-static const char  *YELLOW = "\033[1;33m" ;
-static const char  *MAGENTA = "\033[1;35m" ;
 
+extern const char  *RESET_COLOR ;
+extern const char  *RED ;
+extern const char  *GREEN ;
+extern const char  *YELLOW ;
+extern const char  *MAGENTA ;
 
-void	printOut(const char*, const std::string&, bool EOL = true, bool stream = true) ;
+void	printOut(const char *, const std::string&, bool EOL = true, bool stream = true) ;
 
 } // namespace etc
 

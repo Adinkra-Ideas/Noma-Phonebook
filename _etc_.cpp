@@ -1,6 +1,13 @@
 # include "_etc_.hpp"
 
 namespace etc {
+
+  const char *RESET_COLOR = "\033[0m" ;
+  const char *RED = "\033[1;31m" ;
+  const char *GREEN = "\033[1;32m" ;
+  const char *YELLOW = "\033[1;33m" ;
+  const char *MAGENTA = "\033[1;35m" ;
+
 /**
   * Prints out texts in terminal using Custom Colors
   * @param color is used to set color of text to be printed.
@@ -14,7 +21,7 @@ namespace etc {
   ** If false, texts will be printed to stderr.
   * @returns void
   */
-void	printOut(const char *color, const std::string& texts, bool EOL, bool stream) {
+void	printOut(const char * color, const std::string & texts, bool EOL, bool stream) {
     if ( stream ) {
         std::cout << color
                   << texts
