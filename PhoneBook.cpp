@@ -1,4 +1,4 @@
-# include "PhoneBook.hpp"
+#include "PhoneBook.hpp"
 
 // ********************
 // CANONICALS BEGINS  *
@@ -15,7 +15,7 @@ PhoneBook::~PhoneBook() {
         i++;
     }
 
-  etc::printOut(etc::GREEN, "Goodbye User!") ;
+  noma::printOut(noma::GREEN, "Goodbye User!") ;
 }
 
 // ******************
@@ -52,8 +52,8 @@ Contact*  PhoneBook::getArrayFromContact(const int8_t& i) {
   * @returns void
   */
 void  PhoneBook::showHomeScreen(std::string& cmd) {
-    etc::printOut(etc::MAGENTA, "Noma PhoneBook!") ;
-    etc::printOut(etc::YELLOW, "Enter a Command") ;
+    noma::printOut(noma::MAGENTA, "Noma PhoneBook!") ;
+    noma::printOut(noma::YELLOW, "Enter a Command") ;
     std::getline(std::cin, cmd);
 }
 
@@ -70,7 +70,7 @@ void	PhoneBook::addContact() {
     _contact[_count] = new Contact ;
 
     if ( _contact[_count]->addOneContact(this) ) {
-        etc::printOut(etc::RED, "Contact not Saved!", true, false) ;
+        noma::printOut(noma::RED, "Contact not Saved!", true, false) ;
         delete _contact[_count] ;
         return ;
     }
@@ -78,7 +78,7 @@ void	PhoneBook::addContact() {
         _count -= 1 ;
         this->removeOneContact(0, false) ;
     }
-    etc::printOut(etc::GREEN, "New Contact Saved!") ;
+    noma::printOut(noma::GREEN, "New Contact Saved!") ;
 
     _count += 1 ;
 }
@@ -116,10 +116,10 @@ void	PhoneBook::displaySearchResults() {
     std::string   input ;
 
     i = 0 ;
-    etc::printOut(etc::GREEN, "     INDEX|      NAME|  NICKNAME|") ;
+    noma::printOut(noma::GREEN, "     INDEX|      NAME|  NICKNAME|") ;
 
     if ( ! _count ) {
-        etc::printOut(etc::RED, "Contact List is empty!", true, false) ;
+        noma::printOut(noma::RED, "Contact List is empty!", true, false) ;
         return ;
     }
 
@@ -145,7 +145,7 @@ void	PhoneBook::showSingleContactUsingIndex() {
     int			      i ;
     std::string   input ;
 
-    etc::printOut(etc::YELLOW, "Enter index number of a contact for full details") ;
+    noma::printOut(noma::YELLOW, "Enter index number of a contact for full details") ;
     std::getline(std::cin, input) ;
     try
     {
@@ -153,14 +153,14 @@ void	PhoneBook::showSingleContactUsingIndex() {
     }
     catch ( ... )
     {
-        etc::printOut(etc::RED, "The index requested is wrong!", true, false) ;
+        noma::printOut(noma::RED, "The index requested is wrong!", true, false) ;
         return ;
     }
     if ( i > 0 && i <= _count ) {
         _contact[i - 1]->printContact() ;
     }
     else {
-        etc::printOut(etc::RED, "The index requested is out of range!", true, false) ;
+        noma::printOut(noma::RED, "The index requested is out of range!", true, false) ;
     }
 }
 
@@ -181,7 +181,7 @@ void  PhoneBook::displayBookmarks() {
     }
 
     if ( j == 0 ) {
-        etc::printOut(etc::RED, "Bookmark is empty!", true, false) ;
+        noma::printOut(noma::RED, "Bookmark is empty!", true, false) ;
     }
 }
 
@@ -199,11 +199,11 @@ void  PhoneBook::removeContact() {
     int8_t      i ;
 
     if ( ! _count ) {
-        etc::printOut(etc::RED, "Contact List is empty!", true, false) ;
+        noma::printOut(noma::RED, "Contact List is empty!", true, false) ;
         return ;
     }
 
-    etc::printOut(etc::YELLOW, "Enter index or number of a contact to delete") ;
+    noma::printOut(noma::YELLOW, "Enter index or number of a contact to delete") ;
     std::getline(std::cin, input) ;
 
     try
@@ -224,5 +224,5 @@ void  PhoneBook::removeContact() {
         }
     }
 
-    etc::printOut(etc::GREEN, "Action Performed!") ;
+    noma::printOut(noma::GREEN, "Action Performed!") ;
 }

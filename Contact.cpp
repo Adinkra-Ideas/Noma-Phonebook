@@ -1,4 +1,4 @@
-# include "Contact.hpp"
+#include "Contact.hpp"
 
 // ********************
 // CANONICALS BEGINS  *
@@ -51,17 +51,17 @@ const bool&  Contact::getBookmark() {
   ** if details received were ok.
   */
 bool	Contact::addOneContact(PhoneBook * phonebook) {
-    etc::printOut(etc::YELLOW, "Enter name") ;
+    noma::printOut(noma::YELLOW, "Enter name") ;
     std::getline(std::cin, _name) ;
-    etc::printOut(etc::YELLOW, "Enter phone number") ;
+    noma::printOut(noma::YELLOW, "Enter phone number") ;
     std::getline(std::cin, _number) ;
     while (this->validateNumberInput(phonebook)) {
-        etc::printOut(etc::RED, "Phone number exists already!") ;
-        etc::printOut(etc::YELLOW, "Enter new number") ;
+        noma::printOut(noma::RED, "Phone number exists already!") ;
+        noma::printOut(noma::YELLOW, "Enter new number") ;
         std::getline(std::cin, _number) ;
     }
 
-    etc::printOut(etc::YELLOW, "Enter nickname") ;
+    noma::printOut(noma::YELLOW, "Enter nickname") ;
     std::getline(std::cin, _nickname) ;
     if ( this->entryValidator() ) {
         return true ;
@@ -126,7 +126,7 @@ void	Contact::printContact() {
 const char* Contact::addBookmark() {
     std::string userInput ;
 
-    etc::printOut(etc::YELLOW, "To Bookmark, enter *\nTo return, enter any Character") ;
+    noma::printOut(noma::YELLOW, "To Bookmark, enter *\nTo return, enter any Character") ;
 
     std::getline(std::cin, userInput) ;
     if ( userInput.at(0) == '*' ) {

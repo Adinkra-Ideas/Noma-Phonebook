@@ -1,20 +1,18 @@
-#pragma once
+#ifndef PHONEBOOK_HPP_
+#define PHONEBOOK_HPP_
 
-#ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
-
-# include <iostream>
-# include <string>
-# include <stdexcept>
-# include <iomanip>
-# include "_etc_.hpp"
-# include "Contact.hpp"
+#include <iostream>
+#include <string>
+#include <stdexcept>
+#include <iomanip>
+#include "main.hpp"
+#include "Contact.hpp"
 
 class Contact ;
 
-# ifndef MAX_ENTRY
-#  define MAX_ENTRY 8 // Maximum number of Contacts that this Phonebook App can store
-# endif
+#ifndef MAX_ENTRY
+#define MAX_ENTRY 8 // Maximum number of Contacts that this Phonebook App can store
+#endif // MAX_ENTRY
 
 class PhoneBook
 {
@@ -25,7 +23,7 @@ public:
     const int8_t&   getCount() ;
     Contact*        getArrayFromContact(const int8_t&) ;
 
-    static void   showHomeScreen(std::string&) ;
+    static void     showHomeScreen(std::string&) ;
 
     void    addContact() ;
     void	  removeOneContact(int8_t, const bool&) ;
@@ -39,4 +37,4 @@ private:
     Contact	   *_contact[MAX_ENTRY + 1] ;  // Each array of  *_contact[] holds a unique Contact
 } ;
 
-#endif // PHONEBOOK_HPP
+#endif // PHONEBOOK_HPP_

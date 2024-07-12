@@ -1,12 +1,10 @@
-#pragma once
+#ifndef CONTACT_HPP_
+#define CONTACT_HPP_
 
-#ifndef CONTACT_HPP
-#define CONTACT_HPP
-
-# include <iostream>
-# include <string>
-# include "_etc_.hpp"
-# include "PhoneBook.hpp"
+#include <iostream>
+#include <string>
+#include "main.hpp"
+#include "PhoneBook.hpp"
 
 class PhoneBook ;
 
@@ -34,4 +32,4 @@ private:
     bool          _bookmark ; // If true, it means this contact is saved as bookmark
 } ;
 
-#endif // CONTACT_HPP
+#endif // CONTACT_HPP_
