@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <string>
-#include "main.hpp"
+#include "noma.hpp"
 #include "PhoneBook.hpp"
 
 class PhoneBook ;

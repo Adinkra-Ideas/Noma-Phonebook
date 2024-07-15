@@ -5,7 +5,7 @@
 #include <string>
 #include <stdexcept>
 #include <iomanip>
-#include "main.hpp"
+#include "noma.hpp"
 #include "Contact.hpp"
 
 class Contact ;
@@ -20,7 +20,7 @@ public:
     PhoneBook() ;
     ~PhoneBook() ;
 
-    const int8_t&   getCount() ;
+    const int8_t&   getCount() const ;
     Contact*        getArrayFromContact(const int8_t&) ;
 
     static void     showHomeScreen(std::string&) ;

@@ -27,7 +27,7 @@ PhoneBook::~PhoneBook() {
 //  GETTERS BEGINS  *
 // ******************
 
-const int8_t& PhoneBook::getCount() {
+const int8_t& PhoneBook::getCount() const {
     return (_count) ;
 }
 
